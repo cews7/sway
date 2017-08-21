@@ -11,6 +11,9 @@
 
   <body>
     <%= render "shared/nav" %>
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, sanitize(msg), class: type %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
