@@ -3,6 +3,9 @@
     <div class="container">
       <a href="#" class="brand-logo">Sway</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% end %>
       </ul>
     </div>
   </div>

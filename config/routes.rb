@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  root 'trackers#index', as: :dashboard
   get "/login", to: 'sessions#new', as: :login
   post "/login", to: 'sessions#create'
-  get "/dashboard", to: 'trackers#index', as: :dashboard
+  delete "/logout", to: 'sessions#destroy', as: :logout
+
+  resources :users
 end
