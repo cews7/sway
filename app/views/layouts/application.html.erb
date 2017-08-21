@@ -6,9 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet"/>
   </head>
 
   <body>
+    <%= render "shared/nav" %>
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, sanitize(msg), class: type %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
