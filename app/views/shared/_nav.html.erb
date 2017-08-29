@@ -1,11 +1,13 @@
 <nav>
   <div class="nav-wrapper">
     <div class="container">
-      <a href="#" class="brand-logo">Sway</a>
+      <a class="brand-logo"><%= link_to "SWAY", current_user ? dashboard_path : login_path %></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
-          <li><%= link_to "Logout", logout_path, method: :delete %></li>
-          <li><%= link_to "+", new_tracker_path %></li>
+          <li id="logout"><%= link_to "LOGOUT", logout_path, method: :delete %></li>
+          <% unless current_page?(:controller => 'trackers', :action => 'new') %>
+            <li id="add-tracker"><%= link_to "+", new_tracker_path %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>

@@ -1,3 +1,3 @@
 class Tracker < ApplicationRecord
-  validates :name, :purpose, :partner, presence: true 
+  validates :name, :purpose, presence: true 
 end

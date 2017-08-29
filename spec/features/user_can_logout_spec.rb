@@ -7,8 +7,8 @@ RSpec.describe "As a user" do
 
       visit dashboard_path
 
-      expect(page).to have_content("Logout")
-      click_on("Logout")
+      expect(page).to have_content("LOGOUT")
+      click_on("LOGOUT")
 
       expect(current_path).to eq(login_path)
     end
