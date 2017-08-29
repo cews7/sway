@@ -24,7 +24,7 @@ RSpec.describe "As a user" do
   context "I am on tracker#new" do
     it "when I click submit I'm sent to dashboard" do
       user = create(:user)
-
+      tracker = create(:tracker)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit new_tracker_path
@@ -35,7 +35,7 @@ RSpec.describe "As a user" do
         click_on "Create Tracker!"
       end
 
-      expect(current_path).to eq(tracker_path())
+      expect(current_path).to eq(tracker_path(tracker.id + 1))
     end
   end
 end
