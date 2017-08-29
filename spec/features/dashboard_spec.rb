@@ -8,9 +8,12 @@ RSpec.describe "As a user" do
 
     visit dashboard_path
 
-    click_button('+')
 
-    expect(current_path).to eq(new_trackers_path)
+    within ".nav-wrapper" do
+      find('#add-tracker').click
+    end
+
+    expect(current_path).to eq(new_tracker_path)
     expect(page).to have_content('Name')
     expect(page).to have_content('Partner')
     expect(page).to have_content('Create Tracker!')

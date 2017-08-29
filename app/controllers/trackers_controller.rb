@@ -1,7 +1,9 @@
 class TrackersController < ApplicationController
   def index
-    unless current_user
-      redirect_to login_path
-    end
+    redirect_to login_path unless current_user
+  end
+
+  def new
+    @tracker = Tracker.new
   end
 end
