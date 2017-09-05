@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col s2">
+    <p></p>
+  </div>
+  <div class="col s8">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Create Tracker</span>
+        <%= form_for @tracker do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "e.g. Bills" %>
+        <%= f.label :purpose %>
+        <%= f.text_field :purpose, placeholder: "e.g. Help us know who owes what amount!" %>
+        <%= f.label :partner_email %>
+        <%= f.text_field :partner_email, placeholder: "e.g. partner@email.com" %>
+        <%= f.submit "Create Tracker!", class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
