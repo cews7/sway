@@ -1,1 +1,14 @@
-
+<div class="container">
+  <div class="row">
+  <% @trackers.each do |tracker| %>
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title"><%=tracker.name %></span>
+          <p class="truncate"><%= tracker.purpose %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

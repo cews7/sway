@@ -11,6 +11,8 @@
         <%= f.text_field :name, placeholder: "e.g. Bills" %>
         <%= f.label :purpose %>
         <%= f.text_field :purpose, placeholder: "e.g. Help us know who owes what amount!" %>
+        <%= f.label :partner_email %>
+        <%= f.text_field :partner_email, placeholder: "e.g. partner@email.com" %>
         <%= f.submit "Create Tracker!", class: "btn" %>
         <% end %>
       </div>

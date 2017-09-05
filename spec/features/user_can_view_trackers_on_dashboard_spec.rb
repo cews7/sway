@@ -5,13 +5,17 @@ RSpec.describe "As a user" do
     it "I see my trackers" do
       user = create(:user)
       tracker = create(:tracker)
-      byebug
-      user_tracker = create(:user_tracker, user_id: user.id, tracker_id: tracker.id)
+      partner = create(:user,
+                       email: "partner@email.com")
+      user.trackers << tracker
+      partner.trackers << tracker
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit dashboard_path
 
-      expect(page).to have_selector(:id, 'tracker')
+      save_and_open_page
+      
+      expect(page).to have_content(tracker.name)
     end
   end
 end

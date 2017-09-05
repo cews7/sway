@@ -1,6 +1,7 @@
 class TrackersController < ApplicationController
   def index
     redirect_to login_path unless current_user
+    @trackers = current_user.trackers
   end
 
   def new
@@ -9,10 +10,18 @@ class TrackersController < ApplicationController
 
   def create
     @tracker = Tracker.new(tracker_params)
-    if @tracker.save
-      redirect_to tracker_path(@tracker)
+    @partner = User.find_by_email(params[:tracker][:partner_email])
+    if @partner.present?
+      if @tracker.save
+        current_user.trackers << @tracker
+        @partner.trackers << @tracker
+        redirect_to tracker_path(@tracker)
+      else
+        flash[:error] = @tracker.errors.full_messages.to_sentence
+        render :new
+      end
     else
-      flash[:error] = @tracker.errors.full_messages.to_sentence
+      flash[:error] = "#{params[:tracker][:partner_email]} does not exist, please input valid email"
       render :new
     end
   end

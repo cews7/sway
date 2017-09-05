@@ -3,4 +3,6 @@ class Tracker < ApplicationRecord
 
   has_many :user_trackers
   has_many :users, through: :user_trackers
+
+  attr_accessor :partner_email
 end
